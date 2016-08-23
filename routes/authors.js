@@ -64,13 +64,21 @@ router.post('/:id/delete', function (req, res, next) {
 })
 
 router.get('/:id/edit', function (req, res, next) {
+  Authors().where('id', req.params.id).first().then(function(author){
+    Authors_Books().where('author_id', req.params.id).pluck('book_id').then(function(book_id){
+      Books().whereIn('id', book_id).then(function(author_books){
+        res.render('authors/edit', {books:author_books, author: author, author_books:book_id  })
+      })
+    })
+  })
+})
   // find the author in Authors
   // get all of the authors book_ids from Authors_Books
   // get all of the authors books from BOOKs
   // render the corresponding template
   // use locals to pass books, author, and author_books to the view
   // CHECK YOU WORK by visiting /authors/406/edit
-})
+
 
 router.post('/:id', function (req, res, next) {
   var bookIds = req.body.book_ids.split(",");
@@ -88,12 +96,6 @@ router.get('/:id', function (req, res, next) {
     Authors_Books().where('author_id', req.params.id).pluck('book_id').then(function(books){
       Books().whereIn('id', books).then(function(author_books){
         res.render('authors/show', {author: author, books: author_books});
-        console.log("*****ALL BOOKS*****");
-        console.log(author_books);
-        console.log("****BookID*****");
-        console.log(books);
-        console.log("***********");
-        console.log(author);
       })
     })
   })
