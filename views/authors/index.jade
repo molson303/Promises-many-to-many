@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  include ../partials/sidebar 
+  div.books-container
+    a.btn.btn-default(href='/authors/new') Add Author
+    for author in authors 
+      div.well.well-lg 
+        a(href='/authors/#{author.id}')
+          img.thumbnail(src='#{author.portrait_url}')
+        h3: a(href='/authors/#{author.id}') #{author.first_name} #{author.last_name}
+          a.glyphicon.glyphicon-remove(href='/authors/#{author.id}/delete')
+          a.glyphicon.glyphicon-pencil(href='/authors/#{author.id}/edit')
+        p= author.biography
+        h3 Author Books
+        div.well
+          for book in author.books 
+            p: a(href='/books/#{book.id}') #{book.title}
+  

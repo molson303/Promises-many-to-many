@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  include ../partials/sidebar 
+  div.books-container
+    div.well.well-lg 
+      img.thumbnail(src='#{author.portrait_url}')
+      h2 #{author.first_name} #{author.last_name}
+      p= author.biography 
+      h3 Author Books
+      div.well
+        for book in books 
+          p= book.title
+      form(action='/authors/#{author.id}/delete' method='post')
+        button.btn.btn-danger(type="submit") Delete #{author.first_name} #{author.last_name} ? 

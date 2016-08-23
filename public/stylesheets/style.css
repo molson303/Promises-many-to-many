@@ -1,0 +1,181 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.form-control#books {
+  overflow: hidden;
+  height: 10em;
+}
+.form-control#book {
+  width: 50%;
+  float: left;
+}
+
+.sidebar {
+  width: 15%;
+  margin-right: 1em;
+  float: left;
+  overflow: hidden;
+}
+
+
+.vertical-text {
+	transform: rotate(270deg);
+	transform-origin: left top 100;
+}
+
+.vertical-text {
+  display: inline-block;
+  margin-top: 11em;
+}
+
+.sidebar .glyphicon {
+  font-size: 5em;
+  margin-top: 2em;
+}
+
+.sidebar .authors, .sidebar .books {
+  height: 50em;
+  border: 1px solid gray;
+  display: block;
+}
+
+.sidebar .authors:hover {
+  background-color: lightgray;
+  color: white;
+}
+.sidebar .books:hover {
+  background-color: lightgray;
+  color: white;
+}
+
+.home {
+  width: 40%;
+  height: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  margin-top: 6em;
+  overflow: hidden;
+}
+
+.glyphicon-book, .glyphicon-user {
+  margin-top: .5em;
+  font-size: 10em;
+  color: orange;
+}
+
+.navbar-brand {
+  overflow: hidden;
+}
+
+.navbar-brand .glyphicon-book {
+  margin-top: .5em;
+  font-size: 30em;
+  color: orange;
+}
+
+.books, .authors {
+  width: 50%;
+  height: 40em;
+  float: left;
+  text-align: center;
+}
+
+.btn-default {
+  margin-bottom: 2em;
+}
+
+.glyphicon-remove:hover {
+  color: red;
+  text-decoration: none;
+}
+.glyphicon-user:hover {
+  color: gray;
+}
+
+.thumbnail {
+  width: 140px;
+  height: 180px;
+  float: left;
+  margin-right: 15px;
+}
+.navbar .glyphicon-book {
+  margin-top: 0;
+  color: orange;
+  font-size: 2em;
+}
+
+.glyphicon-book:hover {
+  color: gray;
+}
+
+.form-container {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.edit {
+  font-size: 2em;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.btn-primary, .btn-danger {
+  width: 100%;
+  padding: 5%;
+}
+
+.btn-danger {
+  font-size: 2em;
+}
+
+.glyphicon-pencil {
+  color: #4d4d4d;
+  margin-right: .5em;
+  float: right;
+}
+
+.glyphicon-remove {
+  color: #cc0000;
+  float: right;
+}
+.glyphicon-remove:hover {
+  color: red;
+}
+
+.glyphicon-pencil:hover {
+  color: gray;
+}
+
+
+.errors {
+  color: red;
+}
+
+.well-lg {
+  overflow: hidden;
+}
+
+.books-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}

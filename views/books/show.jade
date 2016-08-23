@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  include ../partials/sidebar 
+  div.books-container
+    div.well.well-lg 
+      img.thumbnail(src='#{book.cover_url}')
+      h2= book.title 
+        a.glyphicon.glyphicon-remove(href='/books/#{book.id}/delete')
+        a.glyphicon.glyphicon-pencil(href='/books/#{book.id}/edit')
+      p= book.description
+    div.well 
+      h3 Authors 
+      for author in authors 
+        h4: a(href='/authors/#{author.id}') #{author.first_name} #{author.last_name}

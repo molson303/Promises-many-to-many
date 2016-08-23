@@ -1,0 +1,26 @@
+extends ../layout 
+
+block content 
+  include ../partials/sidebar 
+  div.form-container
+    div.errors
+      if errors 
+        each error in errors 
+          p= error 
+    form(action='/books' method='post')
+      div.form-group
+        label(for="title") Title
+        input.form-control(type="text" id="title" name='title' placeholder="Title")
+      div.form-group
+        label(for="genre") Genre
+        input.form-control(type="text" id="genre" name='genre' placeholder="Genre")
+      div.form-group
+        label(for="cover_url") Cover Image URL 
+        input.form-control(type="text" id="cover_url" name='cover_url' placeholder="http://www.someimage-url.com")
+      div.form-group
+        label(for="description") Description
+        textarea.form-control(rows="5" id='description' name='description' placeholder="Keep it brief")
+      button.btn.btn-primary.edit(type="submit") Add Book
+
+                
+  

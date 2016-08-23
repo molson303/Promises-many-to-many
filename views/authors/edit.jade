@@ -1,0 +1,53 @@
+extends ../layout 
+
+block content 
+  include ../partials/sidebar 
+  div.form-container
+    div.errors
+      if errors 
+        each error in errors 
+          p= error 
+    form(action='/authors/#{author.id}' method='post')
+      div.form-group
+        label(for="first_name") First Name
+        input.form-control(type="text" id="first_name" name='first_name' value=author.first_name)
+      div.form-group
+        label(for="last_name") Last Name
+        input.form-control(type="text" id="last_name" name='last_name' value=author.last_name)
+      div.form-group
+        label(for="portrait_url") Portrait URL 
+        input.form-control(type="text" id="portrait_url" name='portrait_url' value=author.portrait_url)
+      div.form-group
+        label(for="biography") Biography
+        textarea.form-control(rows="5" id='biography' name='biography') #{author.biography}
+      div.form-group
+        p Books
+        div.form-control#books
+          for book in author_books 
+            p= book.title
+      div.form-group#ids
+        input(type='hidden' id='book_ids' name='book_ids')
+      div.form-group
+        select.form-control#book
+          for book in books 
+            option(value=book.id)= book.title 
+          input.btn.btn-default(type='button' onclick="addBook()" value='Add Book') 
+      button.btn.btn-primary.edit(type="submit")  Update #{author.first_name} #{author.last_name} ?
+  
+   script.
+    function addBook(){
+      var book = document.getElementById('book');
+      var i = book.selectedIndex;
+      var theBook = book.options[i].text;
+      var books = document.getElementById('books');
+      var para = document.createElement("p");
+      var textnode = document.createTextNode(theBook);
+      para.appendChild(textnode);
+      books.appendChild(para)
+      var input = document.getElementById("book_ids");
+      input.value += ","+book.options[i].value;
+      books.appendChild(input);
+    }
+
+                
+  
