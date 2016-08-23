@@ -84,6 +84,20 @@ router.post('/:id', function (req, res, next) {
 })
 
 router.get('/:id', function (req, res, next) {
+  Authors().where('id', req.params.id).first().then(function(author){
+    Authors_Books().where('author_id', req.params.id).pluck('book_id').then(function(books){
+      Books().whereIn('id', books).then(function(author_books){
+        res.render('authors/show', {author: author, books: author_books});
+        console.log("*****ALL BOOKS*****");
+        console.log(author_books);
+        console.log("****BookID*****");
+        console.log(books);
+        console.log("***********");
+        console.log(author);
+      })
+    })
+  })
+
   // find the author in Authors
   // get all of the authors book_ids from Authors_Books
   // get all of the authors books from BOOKs
