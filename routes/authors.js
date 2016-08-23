@@ -18,6 +18,24 @@ function Authors_Books() {
 
 
 router.get('/', function(req, res, next) {
+  Authors().then(function(authors){
+    var promises = []
+    for (var i = 0; i < authors.length; i++) {
+    promises.push(helpers.getAuthorBooks(authors[i].id))
+    }
+
+    Promise.all(promises).then(function(results){
+      for (var i = 0; i < results.length; i++) {
+        authors[i].books = results[i]
+      }
+      res.render('authors/index', {authors: authors})
+
+    })
+  })
+})
+
+
+
   // get all authors from Authors
   // THEN for each author, go get all of their book ids from Authors_Books
   // THEN go get all that author's books
@@ -26,7 +44,7 @@ router.get('/', function(req, res, next) {
   // pass an array of authors to the view using locals
   // your author objects should look like this:
     // EXAMPLE: { first_name: 'Laura', last_name: 'Lou', bio: 'her bio', books: [ this should be all of her book objects ]}
-});
+
 
 router.get('/new', function(req, res, next) {
   Books().select().then(function (books) {
